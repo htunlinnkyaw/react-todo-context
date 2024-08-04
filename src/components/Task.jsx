@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TaskContext } from "../context/TaskProvider";
 
-const Task = ({ job: { id, task, isDone }, removeTask, doneTask }) => {
+const Task = ({ job: { id, task, isDone } }) => {
+  const { removeTask, doneTask } = useContext(TaskContext);
+
   const handleRemoveTaskBtn = () => {
     if (confirm("Are you sure you want to delete this task ?")) {
       removeTask(id);

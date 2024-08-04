@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Task from "./Task";
+import { TaskContext } from "../context/TaskProvider";
 
-const TaskList = ({ tasks, removeTask, doneTask }) => {
+const TaskList = () => {
+  const { tasks } = useContext(TaskContext);
+
   return (
     <div>
       <div className="mt-2 flex justify-between bg-black text-white px-4 py-2 rounded">
@@ -16,12 +19,7 @@ const TaskList = ({ tasks, removeTask, doneTask }) => {
         </p>
       )}
       {tasks.map((task) => (
-        <Task
-          key={task.id}
-          job={task}
-          doneTask={doneTask}
-          removeTask={removeTask}
-        />
+        <Task key={task.id} job={task} />
       ))}
     </div>
   );
